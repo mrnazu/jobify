@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+const swaggerUI = require("swagger-ui-express");
+const YAML = require("yamljs");
+const swaggerDocument = YAML.load("./swagger.yaml");
 
 require("dotenv").config();
 require("express-async-errors");
@@ -10,10 +13,12 @@ const cors = require("cors");
 const xss = require("xss-clean");
 const rateLimiter = require("express-rate-limit");
 
+// Swagger setup
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
 app.get("/", (req, res) => {
   res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
 });
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 // Routes
 const authRouter = require("../routes/AuthRoute");
@@ -26,17 +31,14 @@ const errorHandlerMiddleware = require("../middleware/errHandler");
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/jobs", jobRouter);
 
-// Swagger
-const swaggerUI = require("swagger-ui-express");
-const YAML = require("yamljs");
-const swaggerDocument = YAML.load("./swagger.yaml");
-
 // DB
 const connectDB = require("../config/DBconnect");
 const authenticateUser = require("../middleware/Auth");
+
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URI).then(console.log("db connected"));
+    await connectDB(process.env.MONGO_URI);
+    console.log("db connected");
   } catch (error) {
     console.log(error);
   }
