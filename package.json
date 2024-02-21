@@ -1,12 +1,12 @@
 {
-  "name": "jobify",
+  "name": "06-jobs-api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node app.js"
   },
-  "author": "Samuel Amsalu",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.9"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
