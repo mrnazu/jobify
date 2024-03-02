@@ -4,7 +4,7 @@ info:
   contact: {}
   version: '1.0'
 servers:
-  - url: https://mrnazu.github.io/jobify/api/v1
+  - url: https://mrnazu.github.io/jobify/api-docs/
     variables: {}
 paths:
   /auth/register:
