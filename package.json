@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "npx webpack --mode=production"
   },
   "author": "",
   "license": "ISC",
@@ -26,7 +27,9 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.9"
+    "nodemon": "^2.0.9",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
   },
   "engines": {
     "node": "14.x"
