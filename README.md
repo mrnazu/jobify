@@ -18,7 +18,7 @@ To get started with Jobify, follow these steps:
 
 ## Clone the repository to your local machine:
 
-git clone https://github.com/your-username/jobify.git
+git clone https://github.com/mrnazue/jobify.git
 
 ## Navigate to the project directory:
 
